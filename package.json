@@ -1,0 +1,11 @@
+{
+  "name": "dad-jokes",
+  "version": "1.0.0",
+  "description": "dad joke website with natural language processing",
+  "main": "script.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC"
+}
