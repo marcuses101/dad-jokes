@@ -2,10 +2,19 @@
   "name": "dad-jokes",
   "version": "1.0.0",
   "description": "dad joke website with natural language processing",
-  "main": "script.js",
+  "main": "entities.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "author": "",
-  "license": "ISC"
+  "author": "Marcus Connolly",
+  "license": "ISC",
+  "dependencies": {
+    "@google-cloud/functions-framework": "^1.7.1",
+    "@google-cloud/language": "^4.1.0",
+    "jquery": "^3.5.1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/marcuses101/dad-jokes.git"
+  }
 }

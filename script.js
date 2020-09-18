@@ -1,46 +1,93 @@
+"use strict"
+
 const $form = $("#dad-form");
 const $topic = $("#topic");
 const $results = $("#results");
-baseURL = "https://icanhazdadjoke.com/";
+const dadURL = "https://icanhazdadjoke.com/";
+const entitiesURL = `https://language.googleapis.com/v1beta2/documents:analyzeEntities`
+const G_API_KEY = `AIzaSyBtMQVIWlJ0aKzAkCzeF40DrcR_rOjHMG8`
+const imageURL = `https://api.cognitive.microsoft.com//bing/v7.0/images/search`
+const AZURE_KEY = `dcb174f76ef74c55bd2ced6b4152bae6`
+const excludedSearchTerms = [
+    "difference",
+    "experience",
+    "Legend-dairy",
+    "someone",
+    "man",
+    "dad",
+    "one",
+    "person",
+    "bad",
+    "Q",
+    "reservation",
+    "group",
+    "something",
+    "kind",
+    "puns",
+    "word",
+    "rest",
+    "people"
+]
+let searching = false
+const jokeHistory = JSON.parse(window.localStorage.getItem("history"), dateReviver) || [];
+console.log(jokeHistory)
 
-String.prototype.splice = function (idx, rem, str) {
-    return this.slice(0, idx) + str  + this.slice(idx + Math.abs(rem))
+function dateReviver(key, value) {
+    if (key === "date") {
+        return new Date(value);
+    } else {
+        return value;
+    }
 }
 
 async function handleSubmit(e) {
-    console.log("submit fired")
-    e.preventDefault();
-    const topic = $topic.val();
-    let joke = topic
-        ? await getJokeByTopic(topic)
-        : await getRandomJoke()
-        if (!joke) {
-            displayError()
-            return;
+    try {
+        if (searching) return;
+        searching = true;
+        e.preventDefault();
+        const topic = $topic.val();
+        //fetch random joke text or joke text based on topic.
+        let jokeText = topic
+            ? await getJokeByTopic(topic)
+            : await getRandomJoke()
+
+        if (!jokeText) throw new Error("Could not find Joke")
+        const jokeSubject = await processJokeText(jokeText);
+        console.log(jokeSubject);
+        const imagesData = await getJokeImageData(jokeSubject);
+        let jokeImage = await selectAndLoadImage(imagesData);
+        while (!jokeImage.htmlElement) {
+            jokeImage = await selectAndLoadImage(imagesData);
         }
-        joke = formatJoke(joke)
-        console.log(joke)
-    displayJoke(joke)
+        displayJoke(jokeText, jokeImage.htmlElement);
+        logJokeHistory(jokeText, jokeImage.bingValue, topic)
+        searching = false;
+    }
+    catch (e) {
+        searching = false;
+        $form[0].reset();
+        console.log(e);
+        displayError();
+    }
+
 }
 
-function displayError(){
+function displayError() {
     $results.html("Error: This is not the topic you are looking for.")
 }
 
-function formatJoke (string) {
+function formatJoke(string) {
     return string.split(/(?<=[\.\,\!\?])\s/g).join("<br><br>");
 }
-
 // Get joke text
-
 async function getJokeByTopic(topic) {
-    try{
-        const url = `${baseURL}search?term=${encodeURIComponent(topic.trim())}&limit=1`
+    try {
+        const url = `${dadURL}search?term=${encodeURIComponent(topic.trim())}&limit=1`
         console.log(url);
         const initialResponse = await fetch(url, { headers: { "Accept": "application/json" } });
         console.log(initialResponse)
         const initialData = await initialResponse.json();
-        if (!initialResponse.ok) throw new Error(initialResponse.status+": "+initialResponse.statusText)
+        if (!initialResponse.ok) throw new Error(initialResponse.status + ": " + initialResponse.statusText)
         console.log(initialData)
         const randomJokePage = Math.ceil(Math.random() * initialData.total_pages);
         const randomJokeURL = `${url}&page=${randomJokePage}`;
@@ -52,7 +99,7 @@ async function getJokeByTopic(topic) {
             return false;
         }
     }
-    catch(error){
+    catch (error) {
         displayError();
         console.log(error)
     }
@@ -60,7 +107,7 @@ async function getJokeByTopic(topic) {
 
 async function getRandomJoke() {
     try {
-        const response = await fetch(baseURL, { headers: { "Accept": "application/json" } });
+        const response = await fetch(dadURL, { headers: { "Accept": "application/json" } });
         if (!response.ok) throw new Error(response.status + ": " + response.statusText)
         const data = await response.json();
         return data.joke;
@@ -70,31 +117,128 @@ async function getRandomJoke() {
     }
 }
 
-
-
 // process joke text extract key words
-
-async function processJokeText(joke){
+async function processJokeText(joke) {
+    const jokeToSearch = joke.replace(/\n/g, " ")
+    console.log("Joke: " + jokeToSearch)
+    const body = {
+        "document": {
+            content: jokeToSearch,
+            type: "PLAIN_TEXT"
+        },
+        "encodingType": "NONE"
+    }
     try {
-        const response = await fetch()
+        const response = await fetch(entitiesURL + `?key=${G_API_KEY}`, {
+            method: "POST",
+            body: JSON.stringify(body)
+        })
         if (!response.ok) throw new Error(`${response.status}: ${response.statusText}`)
         const data = await response.json();
+        // return if no entities found
+        if (data.entities.length === 0) return "dad"
+        let index = 0;
+        while (excludedSearchTerms.includes(data.entities[index].name)) {
+            index++
+        }
+        const entity = data.entities[index].name;
+
+        if (entity === "girl") return "woman";
+        // split two word entity
+        return /\s/.test(entity)
+            ? entity.split(" ")[0]
+            : entity
 
     } catch (error) {
-        
+        displayError();
+        console.log(error)
     }
+
 }
 
 // get cheesy images to display with joke
+async function getJokeImageData(keyword) {
+    const query = `?q=${keyword}&imagetype=clipart`
+    const fullURL = imageURL + query;
+    console.log(fullURL)
+    try {
+        const response = await fetch(fullURL, {
+            headers: {
+                "Ocp-Apim-Subscription-Key": AZURE_KEY
+            }
+        })
+        if (!response.ok) throw new Error(response.status + ": " + response.statusText)
+        const data = await response.json();
+        return data;
+    } catch (error) {
+        displayError();
+        console.log(error)
+    }
 
+}
+// return and object containing an <img> and the associated bing result. 
+// return false if image fails to load.
+function selectAndLoadImage(jokeData) {
+    return new Promise((resolve, reject) => {
+        const urlIndex = Math.floor(Math.random() * 10)
+        const image = document.createElement("img");
+        console.log(jokeData.value[urlIndex])
+        image.src = jokeData.value[urlIndex].contentUrl;
+        console.dir(image)
+        if (image.complete) resolve({
+            htmlElement: image,
+            bingValue: jokeData.value[urlIndex]
+        })
+        $(image).on("load", () => {
+            console.log("image loaded")
+            resolve(
+                {
+                    htmlElement: image,
+                    bingValue: jokeData.value[urlIndex]
+                }
+            )
+        })
+        $(image).on("error", () => { resolve(false) })
+        setTimeout(() => { resolve(false) }, 5000)
+    })
+
+}
 
 // display formatted joke and image
 
-function displayJoke(joke) {
-        $results.html(joke)
+function displayJoke(jokeText, image) {
+    $results.html(`
+            <h4 class="joke-text">${jokeText}</h4>
+            <img src="${image.src}">
+        `)
+}
+
+// history functions
+
+function logJokeHistory(jokeText, bingResult, searchTerm) {
+    const jokeObject = {
+        searchTerm: searchTerm,
+        text: jokeText,
+        thumbnailURL: bingResult.thumbnailUrl,
+        url: bingResult.contentUrl,
+        date: new Date()
     }
+    jokeHistory.push(jokeObject);
+    console.log(jokeHistory);
+    window.localStorage.setItem("history", JSON.stringify(jokeHistory))
+}
+
+function clearHistory() {
+    jokeHistory.length = 0;
+    window.localStorage.setItem("history", JSON.stringify(jokeHistory))
+}
+
+function removeEntryFromHistory(index) {
+    console.log(jokeHistory.splice(index, 1));
+    window.localStorage.setItem("history", JSON.stringify(jokeHistory))
+    return jokeHistory;
+}
 
 $(() => {
     $form.on("submit", handleSubmit)
-    console.log("hello World")
 })
