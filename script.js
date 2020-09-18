@@ -1,5 +1,5 @@
 "use strict"
-
+// git pages test
 const $form = $("#dad-form");
 const $topic = $("#topic");
 const $results = $("#results");
