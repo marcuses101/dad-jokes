@@ -12,7 +12,8 @@ html {
     box-sizing: border-box;
     font-weight: 900;
     text-shadow: 2px 2px rgba(0, 0, 0, 0.1);
-    background: var(--white)
+    background: var(--white);
+    overflow: hidden;
 }
 
 *,
@@ -89,7 +90,33 @@ a.active {
 }
 
 main {
-    margin-top: 100px;
+    margin-top: 60px;
+}
+
+button, 
+input[type=submit] {
+    font-size: 30px;
+    background-color: var(--blue); 
+    border: none;
+    color: var(--white);
+    border-radius: 5px;
+    box-shadow: 2px 2px 2px 1px rgba(0, 0, 0, 0.3);
+    transition-duration: 0.05s;
+    outline: none;
+}
+
+input[type=submit]:active,
+button:active {
+    color: var(--orange);
+    transform: translate(2px, 2px);
+    box-shadow: none;
+}
+
+input[type=text]{
+    background-color: var(--white);
+    border: none;
+    border-bottom: 3px solid var(--orange);
+    outline: none;
 }
 
 
@@ -109,8 +136,7 @@ h1 {
 }
 form {
     text-align: center;
-    transition-duration: 350ms;
-    transition-timing-function: cubic-bezier(0.44, -0.14, 0.49, 1.16);
+    transform: translateX(-150vw);
 }
 form * {
     margin: 5px auto;
@@ -123,9 +149,7 @@ form * {
     text-align: center;
     color: var(--blue);
     text-shadow: none;
-    transition-duration: 350ms;
-    transition-timing-function: cubic-bezier(0.44, -0.14, 0.49, 1.16);
-    width: 50%;
+    width: 95%;
     margin: auto;
     display: flex;
     flex-direction: column;
@@ -133,19 +157,21 @@ form * {
     background-color: var(--white);
     border: 5px solid var(--pale-orange);
     border-radius: 5px;
-    box-shadow: 3px 3px rgba(0, 0, 0, 0.1);
+    box-shadow: 3px 3px 10px 5px rgba(0, 0, 0, 0.2);   
 }
 .card div{
     flex: 1;
     display: flex;
     align-items: center;
 }
-.off-left {
-    transform: translate(-100vw, 0px);
+.slide-from-left {
+    animation: slide-in 0.5s cubic-bezier(0.44, -0.14, 0.49, 1.16) forwards;
 }
-.off-right{
-    transform: translate(100vw, 0px);
+
+.slide-to-right{
+    animation: slide-out 0.5s cubic-bezier(0.44, -0.14, 0.49, 1.16) forwards;
 }
+
 .card h4 {
     margin: 10px;
 }
@@ -154,8 +180,35 @@ button {
     margin: 10px;
 }
 
+@keyframes slide-in {
+    from {
+        transform: translateX(-150vw);
+    }
+    to {
+        transform: translateX(0);
+    }
+}
+@keyframes slide-out {
+    from {
+        transform: translateX(0);
+    }
+    to {
+        transform: translateX(150vw);
+    }
+}
+
 @media all and (min-width: 470px){
     main{
         margin-top: 66px;
     }
+    .card{
+        width: 50%;
+    }
+}
+
+@media (hover: hover) {
+    input[type=submit]:hover,
+button:hover {
+    color: var(--orange);
+}
 }

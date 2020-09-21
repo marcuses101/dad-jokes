@@ -5,7 +5,7 @@ const $topic = $("#topic");
 const $results = $("#results");
 const dadURL = "https://icanhazdadjoke.com/";
 const entitiesURL = `https://language.googleapis.com/v1beta2/documents:analyzeEntities`
-const G_API_KEY = 'AIzaSyBtMQVIWlJ0aKzAkCzeF40DrcR_rOjHMG8'
+const G_API_KEY = 'AIzaSyCeg3qyipDzL4M0oibcrbF_MoepU7iXk3I'
 const imageURL = `https://api.cognitive.microsoft.com//bing/v7.0/images/search`
 const AZURE_KEY = `dcb174f76ef74c55bd2ced6b4152bae6`
 const excludedSearchTerms = [
@@ -46,7 +46,7 @@ function dateReviver(key, value) {
 
 async function handleSubmit(e) {
     try {
-        $results.children().first().addClass("off-right");
+        $results.children().first().addClass("slide-to-right");
         if (searching) return;
         searching = true;
         e.preventDefault();
@@ -214,16 +214,15 @@ function selectAndLoadImage(jokeData) {
 function displayJoke(jokeText, image) {
 
     let $div = $(
-        `<div class="card off-left">
+        `<div class="card slide-from-left">
             <h4 class="joke-text">${jokeText}</h4>
             <div>
-            <img src="${image.src}">
             </div>
         </div>`
         )
+        $div.children("div").append(image)
         $results.html($div);
-// timeout wait for render. Ugly solution
-        setTimeout(()=>{$div.removeClass("off-left")}, 200)
+        // timeout wait for render. Ugly solution
 }
 
 function removeCard (){
@@ -258,7 +257,7 @@ function removeEntryFromHistory(index) {
 
 function handleStart(e){
     $(this).css({opacity: 1.0, visibility: "visible"}).animate({opacity: 0}, 200);
-    $("#dad-form").removeClass("off-left")
+    $("#dad-form").addClass("slide-from-left")
 }
 
 $(() => {
