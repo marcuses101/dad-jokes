@@ -5,7 +5,10 @@ const $topic = $("#topic");
 const $results = $("#results");
 const dadURL = "https://icanhazdadjoke.com/";
 const entitiesURL = `https://language.googleapis.com/v1beta2/documents:analyzeEntities`
-const G_API_KEY = 'AIzaSyAZDw24a7VN9oXC1X01JfhI2Fm-fMAXXYs'
+// if running locally use IP restricted key, else domain restricted key
+const G_API_KEY = (location.hostname === "localhost" || location.hostname === "127.0.0.1")
+?'AIzaSyAZDw24a7VN9oXC1X01JfhI2Fm-fMAXXYs'
+: 'AIzaSyCeg3qyipDzL4M0oibcrbF_MoepU7iXk3I'
 const imageURL = `https://api.cognitive.microsoft.com//bing/v7.0/images/search`
 const AZURE_KEY = `dcb174f76ef74c55bd2ced6b4152bae6`
 const excludedSearchTerms = [
@@ -141,7 +144,7 @@ async function processJokeText(joke) {
         "encodingType": "NONE"
     }
     try {
-        const response = await fetch(entitiesURL + `?key=${G_API_KEY}`, {
+        let response = await fetch(entitiesURL + `?key=${G_API_KEY}`, {
             method: "POST",
             body: JSON.stringify(body)
         })
