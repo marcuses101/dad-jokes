@@ -1,11 +1,11 @@
 "use strict"
-// git pages test
+// git pages
 const $form = $("#dad-form");
 const $topic = $("#topic");
 const $results = $("#results");
 const dadURL = "https://icanhazdadjoke.com/";
 const entitiesURL = `https://language.googleapis.com/v1beta2/documents:analyzeEntities`
-const G_API_KEY = `AIzaSyBtMQVIWlJ0aKzAkCzeF40DrcR_rOjHMG8`
+const G_API_KEY = 'AIzaSyBtMQVIWlJ0aKzAkCzeF40DrcR_rOjHMG8'
 const imageURL = `https://api.cognitive.microsoft.com//bing/v7.0/images/search`
 const AZURE_KEY = `dcb174f76ef74c55bd2ced6b4152bae6`
 const excludedSearchTerms = [
@@ -26,7 +26,11 @@ const excludedSearchTerms = [
     "puns",
     "word",
     "rest",
-    "people"
+    "people",
+    "add",
+    "thing",
+    "guy",
+    "invention"
 ]
 let searching = false
 const jokeHistory = JSON.parse(window.localStorage.getItem("history"), dateReviver) || [];
@@ -42,6 +46,7 @@ function dateReviver(key, value) {
 
 async function handleSubmit(e) {
     try {
+        $results.children().first().addClass("off-right");
         if (searching) return;
         searching = true;
         e.preventDefault();
@@ -207,10 +212,22 @@ function selectAndLoadImage(jokeData) {
 // display formatted joke and image
 
 function displayJoke(jokeText, image) {
-    $results.html(`
+
+    let $div = $(
+        `<div class="card off-left">
             <h4 class="joke-text">${jokeText}</h4>
+            <div>
             <img src="${image.src}">
-        `)
+            </div>
+        </div>`
+        )
+        $results.html($div);
+// timeout wait for render. Ugly solution
+        setTimeout(()=>{$div.removeClass("off-left")}, 200)
+}
+
+function removeCard (){
+
 }
 
 // history functions
@@ -239,6 +256,16 @@ function removeEntryFromHistory(index) {
     return jokeHistory;
 }
 
+function handleStart(e){
+    $(this).css({opacity: 1.0, visibility: "visible"}).animate({opacity: 0}, 200);
+    $("#dad-form").removeClass("off-left")
+}
+
 $(() => {
     $form.on("submit", handleSubmit)
+    $("nav a").on("click", (event)=>{
+        $(event.target).addClass("active");
+        $("nav a").not(event.target).removeClass("active");
+    })
+    $("#start-btn").on("click",handleStart)
 })
