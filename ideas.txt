@@ -1,6 +1,0 @@
--get dad joke
--start screen
--dail-up
--book mark particular image/joke combination
--local storage history
--download joke
