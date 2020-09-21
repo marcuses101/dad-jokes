@@ -101,7 +101,6 @@ input[type=submit] {
     color: var(--white);
     border-radius: 5px;
     box-shadow: 2px 2px 2px 1px rgba(0, 0, 0, 0.3);
-    transition-duration: 0.05s;
     outline: none;
 }
 
@@ -113,6 +112,7 @@ button:active {
 }
 
 input[type=text]{
+    font-size: 15px;
     background-color: var(--white);
     border: none;
     border-bottom: 3px solid var(--orange);
@@ -202,7 +202,7 @@ button {
         margin-top: 66px;
     }
     .card{
-        width: 50%;
+        max-width: 50%;
     }
 }
 

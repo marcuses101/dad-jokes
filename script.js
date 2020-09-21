@@ -78,7 +78,14 @@ async function handleSubmit(e) {
 }
 
 function displayError() {
-    $results.html("Error: This is not the topic you are looking for.")
+    $(".card").addClass("slide-to-right").on("animationend",()=>{
+        $results.html(
+            `<div class="card slide-from-left">
+                <h4>Error: This is not the topic you are looking for</h4>
+                <img src="https://media.giphy.com/media/4560Nv2656Gv0Lvp9F/giphy.gif">
+            </div>`
+        )
+    })
 }
 
 function formatJoke(string) {
