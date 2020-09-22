@@ -33,7 +33,9 @@ const excludedSearchTerms = [
     "add",
     "thing",
     "guy",
-    "invention"
+    "invention",
+    "Someone",
+    "someone"
 ]
 let searching = false
 const jokeHistory = JSON.parse(window.localStorage.getItem("history"), dateReviver) || [];
