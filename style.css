@@ -22,6 +22,10 @@ html,body {
     box-sizing: inherit;
 }
 
+section {
+    margin: 10px;
+}
+
 h1,
 h2,
 h3,
@@ -36,7 +40,6 @@ nav {
     font-size: 20px;
     color: var(--white);
     position: fixed;
-    overflow: hidden;
     top: 0;
     left: 0.5%;
     border-radius: 5px;
@@ -210,5 +213,13 @@ button {
     input[type=submit]:hover,
 button:hover {
     color: var(--orange);
+    transform: scale(1.005);
+    transition-duration: 0.1s;
+    transition-timing-function: cubic-bezier(0.44, -0.14, 0.49, 1.16);
+}
+input[type=submit]:active,
+button:active {
+    transition-duration: 50ms;
+    transform: translate(2px, 2px);
 }
 }

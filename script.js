@@ -49,10 +49,10 @@ function dateReviver(key, value) {
 
 async function handleSubmit(e) {
     try {
+        e.preventDefault();
         $results.children().first().addClass("slide-to-right");
         if (searching) return;
         searching = true;
-        e.preventDefault();
         const topic = $topic.val();
         //fetch random joke text or joke text based on topic.
         let jokeText = topic
