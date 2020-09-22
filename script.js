@@ -93,9 +93,6 @@ function displayError() {
     })
 }
 
-function formatJoke(string) {
-    return string.split(/(?<=[\.\,\!\?])\s/g).join("<br><br>");
-}
 // Get joke text
 async function getJokeByTopic(topic) {
     try {
