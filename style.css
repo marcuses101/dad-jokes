@@ -42,6 +42,7 @@ nav {
     color: var(--white);
     position: fixed;
     overflow: hidden;
+    z-index: 1;
     top: 0;
     left: 0.5%;
     border-radius: 5px;
