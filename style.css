@@ -41,6 +41,7 @@ nav {
     font-size: 20px;
     color: var(--white);
     position: fixed;
+    overflow: hidden;
     top: 0;
     left: 0.5%;
     border-radius: 5px;
