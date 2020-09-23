@@ -15,6 +15,7 @@ html,body {
     background: var(--white);
     overflow-x: hidden;
     height: 100%;
+    font-family: 'Roboto', sans-serif;
 }
 
 *,
@@ -33,7 +34,16 @@ h3,
 h4,
 h5,
 h6 {
-    margin: 0 0 5px 0;
+    margin: 5px 0 5px 0;
+}
+
+h1 {
+    font-family: 'Satisfy', cursive;
+}
+
+h2 {
+    font-family: 'Satisfy', cursive;
+    font-size: 2em;
 }
 
 nav {
@@ -48,6 +58,7 @@ nav {
     border-radius: 5px;
     width: 99%;
     box-shadow: 2px 2px rgba(0, 0, 0, 0.1);
+    /* display flex in case I want to add more nav items */
     display: flex;
     justify-content: space-between;
     align-items: stretch;
@@ -79,7 +90,7 @@ ul li{
 
 a {
     padding: 0 10px;
-    color: var(--timberwolf);
+    color: var(--white);
     text-decoration: none;
     transition-duration: 200ms;
     border-radius: 3px;
@@ -91,16 +102,16 @@ a {
 a:hover{
     color: var(--orange);
 }
-a.active {
-    color: var(--orange);
-}
 
+/* Space for fixed nav */
 main {
     margin-top: 60px;
 }
 
+/* Button style */
 button, 
 input[type=submit] {
+    margin: 5px;
     font-size: 30px;
     background-color: var(--blue); 
     border: none;
@@ -134,21 +145,12 @@ img {
     display: block;
 }
 
-
-h1 {
-
-    text-align: center;
-    font-family: cursive;
-}
 form {
     text-align: center;
     transform: translateX(-150vw);
 }
 form * {
     margin: 5px auto;
-}
-.joke-text {
-    text-align: center;
 }
 
 .card {
@@ -178,13 +180,7 @@ form * {
     animation: slide-out 0.5s cubic-bezier(0.44, -0.14, 0.49, 1.16) forwards;
 }
 
-.card h4 {
-    margin: 10px;
-}
 
-button {
-    margin: 10px;
-}
 
 @keyframes slide-in {
     from {
@@ -203,12 +199,12 @@ button {
     }
 }
 
-@media all and (min-width: 470px){
+@media all and (min-width: 700px){
     main{
         margin-top: 66px;
     }
     .card{
-        max-width: 50%;
+        max-width: 700px;
     }
 }
 

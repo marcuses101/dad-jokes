@@ -1,0 +1,317 @@
+/*
+* Prefixed by https://autoprefixer.github.io
+* PostCSS: v7.0.29,
+* Autoprefixer: v9.7.6
+* Browsers: last 4 version
+*/
+
+:root {
+
+    --white: #FAF9FA;
+    --grey: hsla(206, 17%, 65%, 1);
+    --orange: #E14F30;
+    --pale-orange: #BC534C;
+    --blue: #2A2A38;
+    }
+    
+    
+    html,body {
+        -webkit-box-sizing: border-box;
+                box-sizing: border-box;
+        font-weight: 900;
+        text-shadow: 2px 2px rgba(0, 0, 0, 0.1);
+        background: var(--white);
+        overflow-x: hidden;
+        height: 100%;
+        font-family: 'Roboto', sans-serif;
+    }
+    
+    *,
+    *:before,
+    *:after {
+        -webkit-box-sizing: inherit;
+                box-sizing: inherit;
+    }
+    
+    section {
+        margin: 10px;
+    }
+    
+    h1,
+    h2,
+    h3,
+    h4,
+    h5,
+    h6 {
+        margin: 5px 0 5px 0;
+    }
+    
+    h1 {
+        font-family: 'Satisfy', cursive;
+    }
+    
+    h2 {
+        font-family: 'Satisfy', cursive;
+        font-size: 2em;
+    }
+    
+    nav {
+        background-color: var(--blue);
+        font-size: 20px;
+        color: var(--white);
+        position: fixed;
+        overflow: hidden;
+        z-index: 1;
+        top: 0;
+        left: 0.5%;
+        border-radius: 5px;
+        width: 99%;
+        -webkit-box-shadow: 2px 2px rgba(0, 0, 0, 0.1);
+                box-shadow: 2px 2px rgba(0, 0, 0, 0.1);
+        /* display flex in case I want to add more nav items */
+        display: -webkit-box;
+        display: -ms-flexbox;
+        display: flex;
+        -webkit-box-pack: justify;
+            -ms-flex-pack: justify;
+                justify-content: space-between;
+        -webkit-box-align: stretch;
+            -ms-flex-align: stretch;
+                align-items: stretch;
+    }
+    
+    nav h1{
+        margin: 0;
+        font-size: 30px;
+        display: -webkit-box;
+        display: -ms-flexbox;
+        display: flex;
+        -webkit-box-align: stretch;
+            -ms-flex-align: stretch;
+                align-items: stretch;
+    }
+    
+    h1 a{
+        padding: 10px;
+    }
+    nav ul {
+        list-style-type: none;
+        margin: 0;
+        padding: 0;
+        width: 50%;
+        display: -webkit-box;
+        display: -ms-flexbox;
+        display: flex;
+        -webkit-box-align: stretch;
+            -ms-flex-align: stretch;
+                align-items: stretch;
+    }
+    
+    ul li{
+        display: -webkit-box;
+        display: -ms-flexbox;
+        display: flex;
+        -webkit-box-align: stretch;
+            -ms-flex-align: stretch;
+                align-items: stretch;
+    }
+    
+    a {
+        padding: 0 10px;
+        color: var(--white);
+        text-decoration: none;
+        -webkit-transition-duration: 200ms;
+             -o-transition-duration: 200ms;
+                transition-duration: 200ms;
+        border-radius: 3px;
+        width: 100%;
+        display: -webkit-box;
+        display: -ms-flexbox;
+        display: flex;
+        -webkit-box-align: center;
+            -ms-flex-align: center;
+                align-items: center;
+    }
+    
+    a:hover{
+        color: var(--orange);
+    }
+    
+    /* Space for fixed nav */
+    main {
+        margin-top: 60px;
+    }
+    
+    /* Button style */
+    button, 
+    input[type=submit] {
+        margin: 5px;
+        font-size: 30px;
+        background-color: var(--blue); 
+        border: none;
+        color: var(--white);
+        border-radius: 5px;
+        -webkit-box-shadow: 2px 2px 2px 1px rgba(0, 0, 0, 0.3);
+                box-shadow: 2px 2px 2px 1px rgba(0, 0, 0, 0.3);
+        outline: none;
+    }
+    
+    input[type=submit]:active,
+    button:active {
+        color: var(--orange);
+        -webkit-transform: translate(2px, 2px);
+            -ms-transform: translate(2px, 2px);
+                transform: translate(2px, 2px);
+        -webkit-box-shadow: none;
+                box-shadow: none;
+    }
+    
+    input[type=text]{
+        font-size: 20px;
+        background-color: var(--white);
+        border: none;
+        border-bottom: 3px solid var(--orange);
+        outline: none;
+    }
+    
+    
+    img {
+        max-width: 100%;
+        max-height: 60vh;
+        margin: auto;
+        padding: 10px;
+        display: block;
+    }
+    
+    form {
+        text-align: center;
+        -webkit-transform: translateX(-150vw);
+            -ms-transform: translateX(-150vw);
+                transform: translateX(-150vw);
+    }
+    form * {
+        margin: 5px auto;
+    }
+    
+    .card {
+        text-align: center;
+        color: var(--blue);
+        text-shadow: none;
+        width: 95%;
+        margin: auto;
+        display: -webkit-box;
+        display: -ms-flexbox;
+        display: flex;
+        -webkit-box-orient: vertical;
+        -webkit-box-direction: normal;
+            -ms-flex-direction: column;
+                flex-direction: column;
+        -webkit-box-pack: justify;
+            -ms-flex-pack: justify;
+                justify-content: space-between;
+        background-color: var(--white);
+        border: 5px solid var(--pale-orange);
+        border-radius: 5px;
+        -webkit-box-shadow: 3px 3px 10px 5px rgba(0, 0, 0, 0.2);
+                box-shadow: 3px 3px 10px 5px rgba(0, 0, 0, 0.2);   
+    }
+    .card div{
+        -webkit-box-flex: 1;
+            -ms-flex: 1;
+                flex: 1;
+        display: -webkit-box;
+        display: -ms-flexbox;
+        display: flex;
+        -webkit-box-align: center;
+            -ms-flex-align: center;
+                align-items: center;
+    }
+    .slide-from-left {
+        -webkit-animation: slide-in 0.5s cubic-bezier(0.44, -0.14, 0.49, 1.16) forwards;
+                animation: slide-in 0.5s cubic-bezier(0.44, -0.14, 0.49, 1.16) forwards;
+    }
+    
+    .slide-to-right{
+        -webkit-animation: slide-out 0.5s cubic-bezier(0.44, -0.14, 0.49, 1.16) forwards;
+                animation: slide-out 0.5s cubic-bezier(0.44, -0.14, 0.49, 1.16) forwards;
+    }
+    
+    
+    
+    @-webkit-keyframes slide-in {
+        from {
+            -webkit-transform: translateX(-150vw);
+                    transform: translateX(-150vw);
+        }
+        to {
+            -webkit-transform: translateX(0);
+                    transform: translateX(0);
+        }
+    }
+    
+    
+    
+    @keyframes slide-in {
+        from {
+            -webkit-transform: translateX(-150vw);
+                    transform: translateX(-150vw);
+        }
+        to {
+            -webkit-transform: translateX(0);
+                    transform: translateX(0);
+        }
+    }
+    @-webkit-keyframes slide-out {
+        from {
+            -webkit-transform: translateX(0);
+                    transform: translateX(0);
+        }
+        to {
+            -webkit-transform: translateX(150vw);
+                    transform: translateX(150vw);
+        }
+    }
+    @keyframes slide-out {
+        from {
+            -webkit-transform: translateX(0);
+                    transform: translateX(0);
+        }
+        to {
+            -webkit-transform: translateX(150vw);
+                    transform: translateX(150vw);
+        }
+    }
+    
+    @media all and (min-width: 700px){
+        main{
+            margin-top: 66px;
+        }
+        .card{
+            max-width: 700px;
+        }
+    }
+    
+    @media (hover: hover) {
+        input[type=submit]:hover,
+    button:hover {
+        color: var(--orange);
+        -webkit-transform: scale(1.005);
+            -ms-transform: scale(1.005);
+                transform: scale(1.005);
+        -webkit-transition-duration: 0.1s;
+             -o-transition-duration: 0.1s;
+                transition-duration: 0.1s;
+        -webkit-transition-timing-function: cubic-bezier(0.44, -0.14, 0.49, 1.16);
+             -o-transition-timing-function: cubic-bezier(0.44, -0.14, 0.49, 1.16);
+                transition-timing-function: cubic-bezier(0.44, -0.14, 0.49, 1.16);
+    }
+    input[type=submit]:active,
+    button:active {
+        -webkit-transition-duration: 50ms;
+             -o-transition-duration: 50ms;
+                transition-duration: 50ms;
+        -webkit-transform: translate(2px, 2px);
+            -ms-transform: translate(2px, 2px);
+                transform: translate(2px, 2px);
+    }
+    }
