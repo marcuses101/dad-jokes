@@ -1,5 +1,4 @@
 :root {
-
 --white: #FAF9FA;
 --grey: hsla(206, 17%, 65%, 1);
 --orange: #E14F30;
@@ -12,9 +11,9 @@ html,body {
     box-sizing: border-box;
     font-weight: 900;
     text-shadow: 2px 2px rgba(0, 0, 0, 0.1);
-    background: var(--white);
+    background-color: var(--white);
     overflow-x: hidden;
-    height: 100%;
+    min-height: 100vh;
     font-family: 'Roboto', sans-serif;
 }
 
@@ -39,6 +38,9 @@ h6 {
 
 h1 {
     font-family: 'Satisfy', cursive;
+    padding: 10px;
+    margin: 0;
+    font-size: 30px;
 }
 
 h2 {
@@ -62,45 +64,6 @@ nav {
     display: flex;
     justify-content: space-between;
     align-items: stretch;
-}
-
-nav h1{
-    margin: 0;
-    font-size: 30px;
-    display: flex;
-    align-items: stretch;
-}
-
-h1 a{
-    padding: 10px;
-}
-nav ul {
-    list-style-type: none;
-    margin: 0;
-    padding: 0;
-    width: 50%;
-    display: flex;
-    align-items: stretch;
-}
-
-ul li{
-    display: flex;
-    align-items: stretch;
-}
-
-a {
-    padding: 0 10px;
-    color: var(--white);
-    text-decoration: none;
-    transition-duration: 200ms;
-    border-radius: 3px;
-    width: 100%;
-    display: flex;
-    align-items: center;
-}
-
-a:hover{
-    color: var(--orange);
 }
 
 /* Space for fixed nav */
@@ -133,16 +96,15 @@ input[type=text]{
     background-color: var(--white);
     border: none;
     border-bottom: 3px solid var(--orange);
+    border-radius: 0;
     outline: none;
 }
-
 
 img {
     max-width: 100%;
     max-height: 60vh;
     margin: auto;
     padding: 10px;
-    display: block;
 }
 
 form {
@@ -167,11 +129,9 @@ form * {
     border-radius: 5px;
     box-shadow: 3px 3px 10px 5px rgba(0, 0, 0, 0.2);   
 }
-.card div{
-    flex: 1;
-    display: flex;
-    align-items: center;
-}
+
+/* Animations */
+
 .slide-from-left {
     animation: slide-in 0.5s cubic-bezier(0.44, -0.14, 0.49, 1.16) forwards;
 }
@@ -179,8 +139,6 @@ form * {
 .slide-to-right{
     animation: slide-out 0.5s cubic-bezier(0.44, -0.14, 0.49, 1.16) forwards;
 }
-
-
 
 @keyframes slide-in {
     from {
@@ -218,7 +176,6 @@ button:hover {
 }
 input[type=submit]:active,
 button:active {
-    transition-duration: 50ms;
     transform: translate(2px, 2px);
 }
 }

@@ -6,7 +6,6 @@
 */
 
 :root {
-
     --white: #FAF9FA;
     --grey: hsla(206, 17%, 65%, 1);
     --orange: #E14F30;
@@ -20,9 +19,9 @@
                 box-sizing: border-box;
         font-weight: 900;
         text-shadow: 2px 2px rgba(0, 0, 0, 0.1);
-        background: var(--white);
+        background-color: var(--white);
         overflow-x: hidden;
-        height: 100%;
+        min-height: 100vh;
         font-family: 'Roboto', sans-serif;
     }
     
@@ -48,6 +47,9 @@
     
     h1 {
         font-family: 'Satisfy', cursive;
+        padding: 10px;
+        margin: 0;
+        font-size: 30px;
     }
     
     h2 {
@@ -78,63 +80,6 @@
         -webkit-box-align: stretch;
             -ms-flex-align: stretch;
                 align-items: stretch;
-    }
-    
-    nav h1{
-        margin: 0;
-        font-size: 30px;
-        display: -webkit-box;
-        display: -ms-flexbox;
-        display: flex;
-        -webkit-box-align: stretch;
-            -ms-flex-align: stretch;
-                align-items: stretch;
-    }
-    
-    h1 a{
-        padding: 10px;
-    }
-    nav ul {
-        list-style-type: none;
-        margin: 0;
-        padding: 0;
-        width: 50%;
-        display: -webkit-box;
-        display: -ms-flexbox;
-        display: flex;
-        -webkit-box-align: stretch;
-            -ms-flex-align: stretch;
-                align-items: stretch;
-    }
-    
-    ul li{
-        display: -webkit-box;
-        display: -ms-flexbox;
-        display: flex;
-        -webkit-box-align: stretch;
-            -ms-flex-align: stretch;
-                align-items: stretch;
-    }
-    
-    a {
-        padding: 0 10px;
-        color: var(--white);
-        text-decoration: none;
-        -webkit-transition-duration: 200ms;
-             -o-transition-duration: 200ms;
-                transition-duration: 200ms;
-        border-radius: 3px;
-        width: 100%;
-        display: -webkit-box;
-        display: -ms-flexbox;
-        display: flex;
-        -webkit-box-align: center;
-            -ms-flex-align: center;
-                align-items: center;
-    }
-    
-    a:hover{
-        color: var(--orange);
     }
     
     /* Space for fixed nav */
@@ -171,16 +116,15 @@
         background-color: var(--white);
         border: none;
         border-bottom: 3px solid var(--orange);
+        border-radius: 0;
         outline: none;
     }
-    
     
     img {
         max-width: 100%;
         max-height: 60vh;
         margin: auto;
         padding: 10px;
-        display: block;
     }
     
     form {
@@ -215,17 +159,9 @@
         -webkit-box-shadow: 3px 3px 10px 5px rgba(0, 0, 0, 0.2);
                 box-shadow: 3px 3px 10px 5px rgba(0, 0, 0, 0.2);   
     }
-    .card div{
-        -webkit-box-flex: 1;
-            -ms-flex: 1;
-                flex: 1;
-        display: -webkit-box;
-        display: -ms-flexbox;
-        display: flex;
-        -webkit-box-align: center;
-            -ms-flex-align: center;
-                align-items: center;
-    }
+    
+    /* Animations */
+    
     .slide-from-left {
         -webkit-animation: slide-in 0.5s cubic-bezier(0.44, -0.14, 0.49, 1.16) forwards;
                 animation: slide-in 0.5s cubic-bezier(0.44, -0.14, 0.49, 1.16) forwards;
@@ -235,8 +171,6 @@
         -webkit-animation: slide-out 0.5s cubic-bezier(0.44, -0.14, 0.49, 1.16) forwards;
                 animation: slide-out 0.5s cubic-bezier(0.44, -0.14, 0.49, 1.16) forwards;
     }
-    
-    
     
     @-webkit-keyframes slide-in {
         from {
@@ -248,8 +182,6 @@
                     transform: translateX(0);
         }
     }
-    
-    
     
     @keyframes slide-in {
         from {
@@ -307,9 +239,6 @@
     }
     input[type=submit]:active,
     button:active {
-        -webkit-transition-duration: 50ms;
-             -o-transition-duration: 50ms;
-                transition-duration: 50ms;
         -webkit-transform: translate(2px, 2px);
             -ms-transform: translate(2px, 2px);
                 transform: translate(2px, 2px);
