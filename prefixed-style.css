@@ -12,8 +12,8 @@
     --pale-orange: #BC534C;
     --blue: #2A2A38;
     }
-    
-    
+
+
     html,body {
         -webkit-box-sizing: border-box;
                 box-sizing: border-box;
@@ -24,18 +24,18 @@
         min-height: 100vh;
         font-family: 'Roboto', sans-serif;
     }
-    
+
     *,
     *:before,
     *:after {
         -webkit-box-sizing: inherit;
                 box-sizing: inherit;
     }
-    
+
     section {
         margin: 10px;
     }
-    
+
     h1,
     h2,
     h3,
@@ -44,25 +44,26 @@
     h6 {
         margin: 5px 0 5px 0;
     }
-    
+
     h1 {
         font-family: 'Satisfy', cursive;
         padding: 10px;
         margin: 0;
         font-size: 30px;
     }
-    
+
     h2 {
         font-family: 'Satisfy', cursive;
         font-size: 2em;
     }
-    
+
     nav {
         background-color: var(--blue);
         font-size: 20px;
         color: var(--white);
         position: fixed;
         overflow: hidden;
+        margin-top: 3px;
         z-index: 1;
         top: 0;
         left: 0.5%;
@@ -81,18 +82,18 @@
             -ms-flex-align: stretch;
                 align-items: stretch;
     }
-    
+
     /* Space for fixed nav */
     main {
         margin-top: 60px;
     }
-    
+
     /* Button style */
-    button, 
+    button,
     input[type=submit] {
         margin: 5px;
         font-size: 30px;
-        background-color: var(--blue); 
+        background-color: var(--blue);
         border: none;
         color: var(--white);
         border-radius: 5px;
@@ -100,7 +101,7 @@
                 box-shadow: 2px 2px 2px 1px rgba(0, 0, 0, 0.3);
         outline: none;
     }
-    
+
     input[type=submit]:active,
     button:active {
         color: var(--orange);
@@ -110,7 +111,7 @@
         -webkit-box-shadow: none;
                 box-shadow: none;
     }
-    
+
     input[type=text]{
         font-size: 20px;
         background-color: var(--white);
@@ -119,14 +120,14 @@
         border-radius: 0;
         outline: none;
     }
-    
+
     img {
         max-width: 100%;
         max-height: 60vh;
         margin: auto;
         padding: 10px;
     }
-    
+
     form {
         text-align: center;
         -webkit-transform: translateX(-150vw);
@@ -136,7 +137,7 @@
     form * {
         margin: 5px auto;
     }
-    
+
     .card {
         text-align: center;
         color: var(--blue);
@@ -157,21 +158,21 @@
         border: 5px solid var(--pale-orange);
         border-radius: 5px;
         -webkit-box-shadow: 3px 3px 10px 5px rgba(0, 0, 0, 0.2);
-                box-shadow: 3px 3px 10px 5px rgba(0, 0, 0, 0.2);   
+                box-shadow: 3px 3px 10px 5px rgba(0, 0, 0, 0.2);
     }
-    
+
     /* Animations */
-    
+
     .slide-from-left {
         -webkit-animation: slide-in 0.5s cubic-bezier(0.44, -0.14, 0.49, 1.16) forwards;
                 animation: slide-in 0.5s cubic-bezier(0.44, -0.14, 0.49, 1.16) forwards;
     }
-    
+
     .slide-to-right{
         -webkit-animation: slide-out 0.5s cubic-bezier(0.44, -0.14, 0.49, 1.16) forwards;
                 animation: slide-out 0.5s cubic-bezier(0.44, -0.14, 0.49, 1.16) forwards;
     }
-    
+
     @-webkit-keyframes slide-in {
         from {
             -webkit-transform: translateX(-150vw);
@@ -182,7 +183,7 @@
                     transform: translateX(0);
         }
     }
-    
+
     @keyframes slide-in {
         from {
             -webkit-transform: translateX(-150vw);
@@ -213,7 +214,7 @@
                     transform: translateX(150vw);
         }
     }
-    
+
     @media all and (min-width: 700px){
         main{
             margin-top: 66px;
@@ -222,7 +223,7 @@
             max-width: 700px;
         }
     }
-    
+
     @media (hover: hover) {
         input[type=submit]:hover,
     button:hover {

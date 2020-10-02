@@ -72,11 +72,11 @@ main {
 }
 
 /* Button style */
-button, 
+button,
 input[type=submit] {
     margin: 5px;
     font-size: 30px;
-    background-color: var(--blue); 
+    background-color: var(--blue);
     border: none;
     color: var(--white);
     border-radius: 5px;
@@ -127,7 +127,7 @@ form * {
     background-color: var(--white);
     border: 5px solid var(--pale-orange);
     border-radius: 5px;
-    box-shadow: 3px 3px 10px 5px rgba(0, 0, 0, 0.2);   
+    box-shadow: 3px 3px 10px 5px rgba(0, 0, 0, 0.2);
 }
 
 /* Animations */
