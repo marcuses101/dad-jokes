@@ -112,6 +112,11 @@
                 box-shadow: none;
     }
 
+    input[type=submit]:hover,
+    button:hover {
+        cursor: pointer;
+    }
+
     input[type=text]{
         font-size: 20px;
         background-color: var(--white);
