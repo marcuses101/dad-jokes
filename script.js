@@ -168,7 +168,7 @@ async function getJokeImageData(keyword) {
     }
 
 }
-// return and object containing an <img> and the associated bing result. 
+// return and object containing an <img> and the associated bing result.
 // return false if image fails to load.
 function selectAndLoadImage(jokeData) {
     return new Promise((resolve) => {
