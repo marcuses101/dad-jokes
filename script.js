@@ -52,6 +52,11 @@ async function getRandomJoke() {
   return data;
 }
 
+async function ping (){
+  const response = await fetch(`${URL}?key=168487ec-8335-4929-b31c-1b0b3ab783ad`)
+  const data = await response.text()
+}
+
 function selectAndLoadImage(imagesArray) {
   return new Promise((resolve, reject) => {
     function loop() {
@@ -118,6 +123,8 @@ function handleStart(e) {
 }
 
 function runApp() {
+  // run ping to wake up cloud server. Speed up first joke load.
+  ping().catch(e=>console.log(e))
   $form.on("submit", handleSubmit);
   $("nav a").on("click", (event) => {
     $(event.target).addClass("active");
