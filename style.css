@@ -1,30 +1,30 @@
 :root {
---white: #FAF9FA;
---grey: hsla(206, 17%, 65%, 1);
---orange: #E14F30;
---pale-orange: #BC534C;
---blue: #2A2A38;
+  --white: #faf9fa;
+  --grey: hsla(206, 17%, 65%, 1);
+  --orange: #e14f30;
+  --pale-orange: #bc534c;
+  --blue: #2a2a38;
 }
 
-
-html,body {
-    box-sizing: border-box;
-    font-weight: 900;
-    text-shadow: 2px 2px rgba(0, 0, 0, 0.1);
-    background-color: var(--white);
-    overflow-x: hidden;
-    min-height: 100vh;
-    font-family: 'Roboto', sans-serif;
+html,
+body {
+  box-sizing: border-box;
+  font-weight: 900;
+  text-shadow: 2px 2px rgba(0, 0, 0, 0.1);
+  background-color: var(--white);
+  overflow-x: hidden;
+  min-height: 100vh;
+  font-family: "Roboto", sans-serif;
 }
 
 *,
 *:before,
 *:after {
-    box-sizing: inherit;
+  box-sizing: inherit;
 }
 
 section {
-    margin: 10px;
+  margin: 10px;
 }
 
 h1,
@@ -33,149 +33,176 @@ h3,
 h4,
 h5,
 h6 {
-    margin: 5px 0 5px 0;
+  margin: 5px 0 5px 0;
 }
 
 h1 {
-    font-family: 'Satisfy', cursive;
-    padding: 10px;
-    margin: 0;
-    font-size: 30px;
+  font-family: "Satisfy", cursive;
+  padding: 10px;
+  margin: 0;
+  font-size: 30px;
 }
 
 h2 {
-    font-family: 'Satisfy', cursive;
-    font-size: 2em;
+  font-family: "Satisfy", cursive;
+  font-size: 2em;
 }
 
 nav {
-    background-color: var(--blue);
-    font-size: 20px;
-    color: var(--white);
-    position: fixed;
-    overflow: hidden;
-    z-index: 1;
-    top: 0;
-    left: 0.5%;
-    border-radius: 5px;
-    width: 99%;
-    box-shadow: 2px 2px rgba(0, 0, 0, 0.1);
-    /* display flex in case I want to add more nav items */
-    display: flex;
-    justify-content: space-between;
-    align-items: stretch;
+  background-color: var(--blue);
+  font-size: 20px;
+  color: var(--white);
+  position: fixed;
+  overflow: hidden;
+  z-index: 1;
+  top: 0;
+  left: 0.5%;
+  border-radius: 5px;
+  width: 99%;
+  box-shadow: 2px 2px rgba(0, 0, 0, 0.1);
+  /* display flex in case I want to add more nav items */
+  display: flex;
+  justify-content: space-between;
+  align-items: stretch;
 }
 
 /* Space for fixed nav */
 main {
-    margin-top: 60px;
+  margin-top: 60px;
 }
 
 /* Button style */
 button,
-input[type=submit] {
-    margin: 5px;
-    font-size: 30px;
-    background-color: var(--blue);
-    border: none;
-    color: var(--white);
-    border-radius: 5px;
-    box-shadow: 2px 2px 2px 1px rgba(0, 0, 0, 0.3);
-    outline: none;
+input[type="submit"] {
+  margin: 5px;
+  font-size: 30px;
+  background-color: var(--blue);
+  border: none;
+  color: var(--white);
+  border-radius: 5px;
+  box-shadow: 2px 2px 2px 1px rgba(0, 0, 0, 0.3);
+  outline: none;
 }
 
-input[type=submit]:active,
+input[type="submit"]:active,
 button:active {
-    color: var(--orange);
-    transform: translate(2px, 2px);
-    box-shadow: none;
+  color: var(--orange);
+  transform: translate(2px, 2px);
+  box-shadow: none;
 }
 
-input[type=text]{
-    font-size: 20px;
-    background-color: var(--white);
-    border: none;
-    border-bottom: 3px solid var(--orange);
-    border-radius: 0;
-    outline: none;
+input[type="text"] {
+  font-size: 20px;
+  background-color: var(--white);
+  border: none;
+  border-bottom: 3px solid var(--orange);
+  border-radius: 0;
+  outline: none;
 }
 
 img {
-    max-width: 100%;
-    max-height: 60vh;
-    margin: auto;
-    padding: 10px;
+  max-width: 100%;
+  max-height: 60vh;
+  margin: auto;
+  padding: 10px;
 }
 
 form {
-    text-align: center;
-    transform: translateX(-150vw);
+  text-align: center;
+  transform: translateX(-150vw);
 }
 form * {
-    margin: 5px auto;
+  margin: 5px auto;
+}
+
+#results {
+}
+#results .card {
+  position: absolute;
+  margin-left: auto;
+  margin-right: auto;
+  left: 0;
+  right: 0;
+  text-align: center;
 }
 
 .card {
-    text-align: center;
-    color: var(--blue);
-    text-shadow: none;
-    width: 95%;
-    margin: auto;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    background-color: var(--white);
-    border: 5px solid var(--pale-orange);
-    border-radius: 5px;
-    box-shadow: 3px 3px 10px 5px rgba(0, 0, 0, 0.2);
+  text-align: center;
+  color: var(--blue);
+  text-shadow: none;
+  width: 95%;
+  margin: auto;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  background-color: var(--white);
+  border: 5px solid var(--pale-orange);
+  border-radius: 5px;
+  box-shadow: 3px 3px 10px 5px rgba(0, 0, 0, 0.2);
 }
 
 /* Animations */
 
 .slide-from-left {
-    animation: slide-in 0.5s cubic-bezier(0.44, -0.14, 0.49, 1.16) forwards;
+  animation: slide-in 0.5s cubic-bezier(0.44, -0.14, 0.49, 1.16) forwards;
 }
 
-.slide-to-right{
-    animation: slide-out 0.5s cubic-bezier(0.44, -0.14, 0.49, 1.16) forwards;
+.slide-to-right {
+  animation: slide-out 0.5s cubic-bezier(0.44, -0.14, 0.49, 1.16) forwards;
+}
+
+.struggle {
+  animation: strug 0.25s ease-in-out infinite;
 }
 
 @keyframes slide-in {
-    from {
-        transform: translateX(-150vw);
-    }
-    to {
-        transform: translateX(0);
-    }
+  from {
+    transform: translateX(-150vw);
+  }
+  to {
+    transform: translateX(0);
+  }
 }
 @keyframes slide-out {
-    from {
-        transform: translateX(0);
-    }
-    to {
-        transform: translateX(150vw);
-    }
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(150vw);
+  }
 }
 
-@media all and (min-width: 700px){
-    main{
-        margin-top: 66px;
-    }
-    .card{
-        max-width: 700px;
-    }
+@keyframes strug {
+  0% {
+    transform: translateX(0);
+  }
+  50% {
+    transform: translateX(2px);
+  }
+  100% {
+    transform: translateX(0);
+  }
+}
+
+@media all and (min-width: 700px) {
+  main {
+    margin-top: 66px;
+  }
+  .card {
+    max-width: 700px;
+  }
 }
 
 @media (hover: hover) {
-    input[type=submit]:hover,
-button:hover {
+  input[type="submit"]:hover,
+  button:hover {
     color: var(--orange);
     transform: scale(1.005);
     transition-duration: 0.1s;
     transition-timing-function: cubic-bezier(0.44, -0.14, 0.49, 1.16);
-}
-input[type=submit]:active,
-button:active {
+  }
+  input[type="submit"]:active,
+  button:active {
     transform: translate(2px, 2px);
-}
+  }
 }

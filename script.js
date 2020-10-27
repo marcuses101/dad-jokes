@@ -14,7 +14,7 @@ async function handleSubmit(e) {
   try {
     e.preventDefault();
     // remove current slide
-    $results.children().first().addClass("slide-to-right");
+    $results.children().first().addClass("struggle");
     // prevent from running if already searching for a new joke
     if (searching) return;
     searching = true;
@@ -23,6 +23,8 @@ async function handleSubmit(e) {
     //fetch random joke text or joke text based on topic.
     const joke = topic ? await getJokeByTopic(topic) : await getRandomJoke();
     const image = await selectAndLoadImage(joke.images);
+    $results.children().first().removeClass("struggle").addClass('slide-to-right')
+    .on('animationend',function(){$(this).remove()});
     displayJoke(joke.joke, image);
     searching = false;
   } catch (error) {
@@ -98,7 +100,7 @@ function displayJoke(jokeText, image) {
         </div>`
   );
   $card.append(image);
-  $results.html($card);
+  $results.prepend($card);
 }
 
 function displayError() {
