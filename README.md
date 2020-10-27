@@ -7,7 +7,7 @@ https://marcuses101.github.io/dad-jokes/
 
 ## Summary
 This app presents dad-jokes (random or filtered by topic) paired with top-notch relevant clipArt.  
-Communicates with fetches joke data from custom [Node Server](https://github.com/marcuses101/dad-joke-server).
+Fetches joke data from custom [Node Server](https://github.com/marcuses101/dad-joke-server).
 
 ## Technologies
 - HTML
